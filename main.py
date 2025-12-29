@@ -117,21 +117,6 @@ async def search_face(file: UploadFile = File(...)):
     return {"matches": top_matches}
 
 
-# @app.get("/faces/")
-# def get_all_faces():
-#     docs = db.collection("faces").stream()
-#     faces = []
-#     for doc in docs:
-#         data = doc.to_dict()
-#         if "image_url" in data:
-#             faces.append({
-#                 "image_url": data["image_url"],
-#                 "face_url": data.get("face_url", ""),  # ✅ Add face_url for cropped view
-#                 "name": data.get("name", ""),
-#                 "tags": data.get("tags", [])
-#             })
-#     return {"faces": faces}
-
 @app.get("/faces/")
 def get_all_faces():
     docs = db.collection("faces").stream()
